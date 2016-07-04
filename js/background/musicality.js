@@ -87,16 +87,15 @@ function Musicality(){
 	 * Update information method. Called periodically by the execution loop
 	 */
 	this.updateInformation = function() {
-		this.logger.log("UpdateInformation()");
-
+		that.logger.log("UpdateInformation()");
         // Have we already found a tab playing music?
-        var lastPlayingTabId = this.playerHandler.GetLastPlayingTabId();
+        var lastPlayingTabId = that.playerHandler.GetLastPlayingTabId();
         if (lastPlayingTabId != -1){
             // Check if the tab still exists
             Helper.DoesTabExist(lastPlayingTabId, function(exists){
             	if (exists){
                     // Is it still playing music?
-                    this.playerHandler.IsStillPlayingMusic(function(isPlaying){
+                    that.playerHandler.IsStillPlayingMusic(function(isPlaying){
                         if (that.blacklistHandler.IsPlayerBlacklisted(that.playerHandler.GetPlayerSimpleName())) {
                             that.logger.log("This player was blacklisted. Looking for a new player.");
 
